@@ -1,0 +1,13 @@
+@**
+* @ngTemplate
+* Generate an AngularJS inlined template.
+*
+* Note: Do not include scripts in your @template HTML. This will break the template.
+*
+* @param name
+* @param template
+*@
+
+@(name: String)(template: Html)
+
+<script type="text/ng-template" id="@name">@template</script>
