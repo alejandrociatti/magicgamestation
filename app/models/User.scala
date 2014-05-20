@@ -16,15 +16,14 @@ case class User(
                  username:String,
                  password:String,
                  name:String,
-                 surname:String,
                  isAdmin:Boolean){
+
 
 
   lazy val decks:List[Deck] =
     id.map { userID =>
       Deck.userDecks(userID)
     }.getOrElse(List[Deck]()).asInstanceOf[List[Deck]]
-
 
 }
 
@@ -33,8 +32,8 @@ object User{
   def save(user: User){
     DB.withConnection{implicit connection =>
       SQL("""
-        INSERT INTO User(username, password, name, surname, isAdmin)
-        VALUES($user.username, $user.password, $user.name, $user.surname, $user.isAdmin)
+        INSERT INTO User(username, password, name, isAdmin)
+        VALUES($user.username, $user.password, $user.name, $user.isAdmin)
           """).executeUpdate
     }
   }
@@ -56,9 +55,8 @@ object User{
       get[String]("username") ~
       get[String]("password") ~
       get[String]("name") ~
-      get[String]("surname") ~
       get[Boolean]("isAdmin") map {
-      case id ~ username ~ password ~ name ~ surname ~ isAdmin => User(id, username, password, name, surname, isAdmin)
+      case id ~ password ~ name ~ surname ~ isAdmin => User(id, password, name, surname, isAdmin)
     }
   }
 

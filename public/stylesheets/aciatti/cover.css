@@ -29,7 +29,7 @@ html, body, #bg {
 }
 
 div.inner-cover.ng-scope {
-    padding: 15%;
+    padding: 20% 0 0 0;
 }
 
 div.well.bs-component {
@@ -41,3 +41,17 @@ legend {
     color: #FFF;
     border-bottom: 1px solid #000;
 }
+
+.popover{
+    background-color: #202020;
+    color: #888888;
+}
+
+.popover.right > .arrow:after {
+    border-right-color: #202020;
+}
+
+.popover.left > .arrow:after {
+    border-left-color: #202020;
+}
+

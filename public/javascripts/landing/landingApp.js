@@ -5,7 +5,7 @@
  * Time: 22:39
  */
 
-var landingCtrlApp = angular.module('LandingApp', ['ngRoute', 'app.controllers']);
+var landingCtrlApp = angular.module('LandingApp', ['ngRoute', 'app.controllers', 'app.directives']);
 
 landingCtrlApp.config(['$routeProvider',
     function($routeProvider) {

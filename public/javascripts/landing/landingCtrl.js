@@ -12,7 +12,7 @@
  * Time: 6:33 PM
  */
 
-var landingCtrlModule = angular.module('app.controllers', []);
+var landingCtrlModule = angular.module('app.controllers', ['app.services']);
 
 landingCtrlModule.controller('BackgroundController', ['$scope',
     function ($scope) {
@@ -35,11 +35,17 @@ landingCtrlModule.controller('BackgroundController', ['$scope',
 
 landingCtrlModule.controller('LoginController', ['$scope',
     function ($scope) {
-        $scope.user = "jaso"
-
+        $scope.send = function(){
+            //TODO: check form validity & send form
+        }
     }]);
 
 landingCtrlModule.controller('SignupController', ['$scope',
     function ($scope) {
-        $scope.user= 'berto'
+        $scope.sent = false;
+
+        $scope.submit = function(){
+            $scope.sent = true;
+            //TODO: check form validity & send form
+        }
     }]);

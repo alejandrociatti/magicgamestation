@@ -1,0 +1,56 @@
+<div class="inner-cover">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well bs-component">
+
+                <form class="form-horizontal" name="signupform" novalidate>
+                    <fieldset>
+                        <legend>Sign Up</legend>
+
+                        <div class="form-group" ng-class="{'has-error': signupform.name.$invalid && sent}">
+                            <label for="name" class="col-lg-2 control-label">Full Name</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="user.name" required ac-popover ac-popover-check="{{sent}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': signupform.username.$invalid && sent}">
+                            <label for="username" class="col-lg-2 control-label">Username</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="user.username" required ac-popover ac-popover-check="{{sent}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': signupform.email.$invalid && sent}">
+                            <label for="email" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="user.email" required ac-popover="content:Please provide a valid email" ac-popover-check="{{sent}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': signupform.password.$error.equals && sent}">
+                            <label for="password" class="col-lg-2 control-label">Password</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="user.password" equals="{{user.confirm_password}}" ac-popover-check="{{sent}}" required/>
+                            </div>
+
+                                <!--label for="password" class="col-lg-2 control-label">Confirm</label-->
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" ng-model="user.confirm_password" placeholder="Password confirmation" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <button class="btn btn-primary" ng-click="submit()">Submit</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
