@@ -6,7 +6,7 @@
 GET     /                               controllers.Application.index
 
 # Users
-GET     /users/list                     controllers.Users.list
+POST     /users/create                     controllers.Users.create
 
 # Javascript routes for AJAX
 GET     /assets/javascripts/routes      controllers.Application.javascriptRoutes

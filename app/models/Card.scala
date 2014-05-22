@@ -2,13 +2,13 @@ package models
 
 import models.CardColor.CardColor
 import models.Type.Type
-import models.Rarity.Rarity
 import anorm._
 import play.api.db.DB
 import play.api.Play.current
 import anorm.SqlParser._
 import anorm.~
 import anorm.Id
+import models.Rarity.Rarity
 
 /**
  * Created with IntelliJ IDEA by: alejandro

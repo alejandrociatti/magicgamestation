@@ -2,7 +2,6 @@ package controllers
 
 import play.api.mvc._
 import play.api.Routes
-import routes.javascript
 
 
 object Application extends Controller {
@@ -14,7 +13,7 @@ object Application extends Controller {
   def javascriptRoutes = Action { implicit request =>
     Ok(
       Routes.javascriptRouter("jsRoutes")(
-        routes.javascript.Users.list
+        routes.javascript.Users.create
       )
     ).as("text/javascript")
   }

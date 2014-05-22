@@ -43,7 +43,6 @@ appDirectiveModule.directive('equals', ['stringManipulation',function (strMani) 
                     elem.popover('destroy');
                 }else{
                     ngModel.$setValidity('equals', false);
-                    console.log('has been sent? '+attrs.acPopoverCheck);
                     if(strMani.toBoolean(attrs.acPopoverCheck)){
                         elem.popover(popover);
                         elem.popover('show');

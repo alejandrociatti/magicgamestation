@@ -47,5 +47,19 @@ landingCtrlModule.controller('SignupController', ['$scope',
         $scope.submit = function(){
             $scope.sent = true;
             //TODO: check form validity & send form
+            if($scope.signupform.$valid){
+                jsRoutes.controllers.Users.create().ajax({
+                    method: 'POST',
+                    data: $scope.user,
+                    responseType: 'application/json',
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function(data){
+                        console.log(data);
+                    }
+
+                });
+            }
         }
     }]);
