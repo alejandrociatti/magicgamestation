@@ -55,17 +55,16 @@ object User{
     DB.withConnection{implicit connection =>
       SQL("""
         SELECT COUNT(*) AS Count FROM User WHERE username={username};
-          """).on("username"-> username).apply().head[Long]("Count") <= 0
-    }
+          """).on("username"-> username).apply().head[Long]("Count")
+    } > 0
   }
 
   def emailUnavailable(email:String) = {
     DB.withConnection{implicit connection =>
       SQL("""
-        SELECT COUNT(*) AS Count FROM User WHERE username={username} OR email={email};
-          """).on("username"-> username, "email"->email).apply().head[Long]("Count") <= 0
-    }
-
+        SELECT COUNT(*) AS Count FROM User WHERE email={email};
+          """).on("email"->email).apply().head[Long]("Count")
+    } > 0
   }
 
   def save(user: User) = {

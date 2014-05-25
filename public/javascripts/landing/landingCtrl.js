@@ -5,13 +5,6 @@
  * Time: 19:10
  */
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alejandro
- * Date: 4/29/2014
- * Time: 6:33 PM
- */
-
 var landingCtrlModule = angular.module('app.controllers', ['app.services']);
 
 landingCtrlModule.controller('BackgroundController', ['$scope',
@@ -43,10 +36,11 @@ landingCtrlModule.controller('LoginController', ['$scope',
 landingCtrlModule.controller('SignupController', ['$scope',
     function ($scope) {
         $scope.sent = false;
+        $scope.emailTaken = false;
+        $scope.userTaken = false;
 
         $scope.submit = function(){
             $scope.sent = true;
-            //TODO: check form validity & send form
             if($scope.signupform.$valid){
                 jsRoutes.controllers.Users.create().ajax({
                     method: 'POST',
@@ -54,6 +48,17 @@ landingCtrlModule.controller('SignupController', ['$scope',
                     responseType: 'application/json',
                     success: function(data){
                         console.log(data);
+                        if(data.status == 'OK'){
+                            alert('success!');
+                        }else {
+                            if (data.msg == 'email') {
+                                $scope.emailTaken = true;
+                            }
+                            if(data.msg == 'username'){
+                                $scope.userTaken = true;
+                            }
+                            $scope.$apply();
+                        }
                     },
                     error: function(data){
                         console.log(data);

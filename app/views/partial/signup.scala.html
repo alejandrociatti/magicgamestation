@@ -3,7 +3,17 @@
         <div class="col-lg-12">
             <div class="well bs-component">
 
-                <form class="form-horizontal" name="signupform" novalidate>
+                <div class="alert alert-dismissable alert-danger" ng-class="{'hidden': !emailTaken}">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    Email is already in use. <a href="#" class="alert-link">Is it you?</a>
+                </div>
+
+                <div class="alert alert-dismissable alert-danger" ng-class="{'hidden': !userTaken}">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    Username is already taken
+                </div>
+
+                <form class="form-horizontal" name="signupform" novalidate ng-submit="submit()">
                     <fieldset>
                         <legend>Sign Up</legend>
 
@@ -42,7 +52,7 @@
 
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <button class="btn btn-primary" ng-click="submit()">Submit</button>
+                                <button class="btn btn-primary">Submit</button>
                             </div>
                         </div>
 

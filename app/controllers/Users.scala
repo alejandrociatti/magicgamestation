@@ -33,11 +33,11 @@ object Users extends Controller{
   def create = Action {implicit request =>
     form.bindFromRequest.fold(
       formWithErrors => {
-        BadRequest(Json.toJson(Map("status"->"KO", "msg"->"form")).toString).as(JSON)
+        BadRequest(Json.toJson(Map("status"->"KO", "msg"->"form"))).as(JSON)
       },
       user => {
-        if(User.unameUnavailable(user.username)) Ok(Json.toJson(Map("status"->"KO","msg"->"username")))
-        else if(User.emailUnavailable(user.email)) Ok(Json.toJson(Map("status"->"KO","msg"->"email")))
+        if(User.emailUnavailable(user.email)) Ok(Json.toJson(Map("status"->"KO","msg"->"email")))
+        else if(User.unameUnavailable(user.username)) Ok(Json.toJson(Map("status"->"KO","msg"->"username")))
         else{
           val newUser = User(user.id, user.username, user.password, user.name, user.email, user.isAdmin)
           val id = User.save(newUser)
